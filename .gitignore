@@ -1,0 +1,9 @@
+# Ignorar archivos y directorios generados por el editor
+.vscode/
+.idea/
+
+# Ignorar archivos de respaldo
+*~
+
+# Ignorar archivos específicos
+*.log
