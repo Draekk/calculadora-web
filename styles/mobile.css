@@ -85,7 +85,13 @@ h1, h3{
     width: 100%;
     height: 50%;
     background: none;
-    border: solid black;
+    text-align: center;
+    font-size: 2rem;
+    overflow: hidden;
+}
+
+#screen section h4:nth-child(2){
+    font-size: 1.4rem;
 }
 
 #ckeys {
