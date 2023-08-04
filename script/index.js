@@ -17,18 +17,20 @@ const screen = document.querySelector("#screen h1");
 
 //Funcion que muestra el valor en pantalla
 function show_value(button){
-    //Comprobar si el valor del boton es un numero
-    if(!isNaN(parseInt(button.innerHTML))){
-        console.log(parseInt(button.innerHTML));
-        //Comprobar si el valor en pantalla solo contiene un cero (0)
-        if(screen.innerHTML === "0"){
-            screen.innerHTML = button.innerHTML;
-        } else {
+    if(screen.innerHTML.length < 11){
+        //Comprobar si el valor del boton es un numero
+        if(!isNaN(parseInt(button.innerHTML))){
+            console.log(parseInt(button.innerHTML));
+            //Comprobar si el valor en pantalla solo contiene un cero (0)
+            if(screen.innerHTML === "0"){
+                screen.innerHTML = button.innerHTML;
+            } else {
+                screen.innerHTML += button.innerHTML;
+            }
+        //Comprobar si el valor en pantalla contiene o no el caracter decimal (.)
+        } else if(button.innerHTML == '.' && !screen.innerHTML.includes('.')){
+            console.log(button.innerHTML);
             screen.innerHTML += button.innerHTML;
         }
-    //Comprobar si el valor en pantalla contiene o no el caracter decimal (.)
-    } else if(button.innerHTML == '.' && !screen.innerHTML.includes('.')){
-        console.log(button.innerHTML);
-        screen.innerHTML += button.innerHTML;
     }
 }
