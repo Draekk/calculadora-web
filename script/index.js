@@ -11,6 +11,11 @@ const b8 = document.querySelector("#ckeys li:nth-child(6) > button");
 const b9 = document.querySelector("#ckeys li:nth-child(7) > button");
 
 //Definicion de variables de teclas de operacion
+const plus = document.querySelector("#ckeys li:nth-child(12) > button");
+const minus = document.querySelector("#ckeys li:nth-child(8) > button");
+const product = document.querySelector("#ckeys li:nth-child(3) > button");
+const div = document.querySelector("#ckeys li:nth-child(2) > button");
+const negative = document.querySelector("#ckeys li:nth-child(4) > button");
 
 //Definicion de otras variables
 const screen = document.querySelector("#screen h1");
