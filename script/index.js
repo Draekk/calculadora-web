@@ -17,8 +17,13 @@ const product = document.querySelector("#ckeys li:nth-child(3) > button");
 const div = document.querySelector("#ckeys li:nth-child(2) > button");
 const negative = document.querySelector("#ckeys li:nth-child(4) > button");
 
+//Definicion de variables de almacenamiento
+let number1 = 0;
+
 //Definicion de otras variables
 const screen = document.querySelector("#screen h1");
+const op_screen = document.querySelector("#screen h4:nth-child(1)");
+const num_screen = document.querySelector("#screen > section h4:nth-child(2)");
 
 //Funcion que muestra el valor en pantalla
 function show_value(button){
@@ -40,6 +45,20 @@ function show_value(button){
     }
 }
 
+//Metodo para reiniciar la pantalla
 function delete_all(){
     screen.innerText = "0";
+}
+
+//Metodo que realiza la operacion y muestra el resultado
+function operation(button){
+    number1 = parseFloat(screen.innerText);
+    console.log(number1);
+    op_screen.innerText = button.innerHTML;
+
+}
+
+//Metodo que realiza la suma
+function sum(num1, num2){
+    return num1 + num2;
 }
