@@ -34,3 +34,7 @@ function show_value(button){
         }
     }
 }
+
+function delete_all(){
+    screen.innerText = "0";
+}
