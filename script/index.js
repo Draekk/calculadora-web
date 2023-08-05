@@ -27,12 +27,12 @@ const screen = document.querySelector("#screen h1");
 const op_screen = document.querySelector("#screen h4:nth-child(1)");
 const num_screen = document.querySelector("#screen > section h4:nth-child(2)");
 
+
 //Funcion que muestra el valor en pantalla
 function show_value(button) {
     if (screen.innerHTML.length < 11) {
         //Comprobar si el valor del boton es un numero
         if (!isNaN(parseInt(button.innerHTML))) {
-            console.log(parseInt(button.innerHTML));
             //Comprobar si el valor en pantalla solo contiene un cero (0)
             if (screen.innerHTML === "0" || operating) {
                 screen.innerHTML = button.innerHTML;
@@ -42,9 +42,9 @@ function show_value(button) {
             }
             //Comprobar si el valor en pantalla contiene o no el caracter decimal (.)
         } else if (button.innerHTML == '.' && !screen.innerHTML.includes('.')) {
-            console.log(button.innerHTML);
             screen.innerHTML += button.innerHTML;
         }
+        console.log({ number, number2, operating, screen, op_screen });
     }
 }
 
@@ -55,43 +55,45 @@ function delete_all() {
     operating = false;
     number = 0;
     number2 = 0;
+    console.log({ number, number2, operating, screen, op_screen });
 }
 
 //Metodo que realiza la operacion y muestra el resultado
 function operation(button) {
     if (number === 0) {
-        number = parseFloat(screen.innerText);
-        console.log(number);
+        number = fix_number_length(parseFloat(screen.innerText));
         op_screen.innerText = button.innerHTML;
-    } else if (op_screen !== "=") {
-        if (number2 === 0) {
-            number2 = parseFloat(screen.innerText);
+    } else {
+        if(number2 !== 0){
+            number = fix_number_length(parseFloat(screen.innerText));
         } else {
-            number = parseFloat(screen.innerText);
+            number2 = fix_number_length(parseFloat(screen.innerText));
         }
         //Seleccion de metodo a utilizar
         switch (op_screen.innerText) {
             case "+":   //suma
-                screen.innerText = eleven_or_more(add(number, number2));
+                screen.innerText = fix_number_length(add(number, number2));
                 break;
             case "-":   //resta
                 number = subtract(number, number2);
-                screen.innerText = eleven_or_more(number);
+                screen.innerText = fix_number_length(number);
                 break;
             case "x":   //multiplicacion
                 number = multiply(number, number2);
-                screen.innerText = eleven_or_more(number);
+                screen.innerText = fix_number_length(number);
                 break;
             case "÷":   //division
                 number = divide(number, number2);
-                screen.innerText = eleven_or_more(number);
+                screen.innerText = fix_number_length(number);
                 break;
             default:
                 screen.innerText = "Syntax Error";
         }
         op_screen.innerText = button.innerText;
+        number2 = 0;
     }
     operating = true;
+    console.log({ number, number2, operating, screen, op_screen });
 }
 
 //Metodo que realiza la suma
@@ -116,20 +118,20 @@ function divide(a, b) {
 
 function result() {
     if (op_screen.innerText !== "") {
-        number2 = parseFloat(screen.innerText);
+        number2 = fix_number_length(parseFloat(screen.innerText));
         //Seleccion de operacion
         switch (op_screen.innerText) {
             case "+":
-                screen.innerText = eleven_or_more(add(number, number2));
+                screen.innerText = fix_number_length(add(number, number2));
                 break;
             case "-":
-                screen.innerText = eleven_or_more(subtract(number, number2));
+                screen.innerText = fix_number_length(subtract(number, number2));
                 break;
             case "x":
-                screen.innerText = eleven_or_more(multiply(number, number2));
+                screen.innerText = fix_number_length(multiply(number, number2));
                 break;
             case "÷":
-                screen.innerText = eleven_or_more(divide(number, number2));
+                screen.innerText = fix_number_length(divide(number, number2));
                 break;
             default:
                 screen.innerText = "Error! " + number + number2;
@@ -138,12 +140,13 @@ function result() {
         number = 0;
         number2 = 0;
     }
+    console.log({ number, number2, operating, screen, op_screen });
 }
 
-//Metodo que revisa si el numero a mostrar tiene mas de 11 digitos
-function eleven_or_more(element) {
-    if (String(element).length > 10) {
-        return parseFloat(element.toFixed(10));
+//Metodo que revisa la longitud del numero a mostrar en pantalla
+function fix_number_length(element, width = 10) {
+    if (String(element).length > width) {
+        return parseFloat(element.toFixed(width));
     }
     return element;
 }
