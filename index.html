@@ -15,29 +15,33 @@
             <p>by Draekk</p>
         </header>
         <section id="screen" class="container">
+            <section>
+                <h4></h4>
+                <h4></h4>
+            </section>
             <h1>0</h1>
         </section>
         <ul id="ckeys" class="container">
             <li><button onclick="show_value(this)">%</button></li>
-            <li><button onclick="show_value(this)">÷</button></li>
-            <li><button onclick="show_value(this)">x</button></li>
+            <li><button onclick="operation(this)">÷</button></li>
+            <li><button onclick="operation(this)">x</button></li>
             <li><button onclick="show_value(this)">±</button></li>
             <li><button onclick="show_value(this)">7</button></li>
             <li><button onclick="show_value(this)">8</button></li>
             <li><button onclick="show_value(this)">9</button></li>
-            <li><button onclick="show_value(this)">-</button></li>
+            <li><button onclick="operation(this)">-</button></li>
             <li><button onclick="show_value(this)">4</button></li>
             <li><button onclick="show_value(this)">5</button></li>
             <li><button onclick="show_value(this)">6</button></li>
-            <li><button onclick="show_value(this)">+</button></li>
+            <li><button onclick="operation(this)">+</button></li>
             <li><button onclick="show_value(this)">1</button></li>
             <li><button onclick="show_value(this)">2</button></li>
             <li><button onclick="show_value(this)">3</button></li>
             <li><button onclick="show_value(this)">C</button></li>
-            <li><button onclick="show_value(this)">AC</button></li>
+            <li><button onclick="delete_all()">AC</button></li>
             <li><button onclick="show_value(this)">0</button></li>
             <li><button onclick="show_value(this)">.</button></li>
-            <li><button onclick="show_value(this)">=</button></li>
+            <li><button onclick="result()">=</button></li>
         </ul>
     </main>
 </body>
