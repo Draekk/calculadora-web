@@ -19,6 +19,7 @@ const negative = document.querySelector("#ckeys li:nth-child(4) > button");
 
 //Definicion de variables de almacenamiento
 let number = 0;
+let number2 = 0;
 let operating = false;
 
 //Definicion de otras variables
@@ -53,6 +54,7 @@ function delete_all() {
     op_screen.innerText = "";
     operating = false;
     number = 0;
+    number2 = 0;
 }
 
 //Metodo que realiza la operacion y muestra el resultado
@@ -61,30 +63,32 @@ function operation(button) {
         number = parseFloat(screen.innerText);
         console.log(number);
         op_screen.innerText = button.innerHTML;
-    } else {
+    } else if (op_screen !== "=") {
+        if (number2 === 0) {
+            number2 = parseFloat(screen.innerText);
+        } else {
+            number = parseFloat(screen.innerText);
+        }
         //Seleccion de metodo a utilizar
-        switch(op_screen.innerText){
+        switch (op_screen.innerText) {
             case "+":   //suma
-                number = add(number, parseFloat(screen.innerText));
-                screen.innerText = eleven_or_more(number);
+                screen.innerText = eleven_or_more(add(number, number2));
                 break;
             case "-":   //resta
-                number = subtract(number, parseFloat(screen.innerText));
+                number = subtract(number, number2);
                 screen.innerText = eleven_or_more(number);
                 break;
             case "x":   //multiplicacion
-                number = multiply(number, parseFloat(screen.innerText));
+                number = multiply(number, number2);
                 screen.innerText = eleven_or_more(number);
                 break;
             case "÷":   //division
-                number = divide(number, parseFloat(screen.innerText));
+                number = divide(number, number2);
                 screen.innerText = eleven_or_more(number);
                 break;
             default:
                 screen.innerText = "Syntax Error";
         }
-    }
-    if(button.innerText !== "="){
         op_screen.innerText = button.innerText;
     }
     operating = true;
@@ -96,23 +100,49 @@ function add(a, b) {
 }
 
 //Metodo que realiza la resta
-function subtract(a, b){
+function subtract(a, b) {
     return a - b;
 }
 
 //Metodo que realiza la multiplicacion
-function multiply(a, b){
+function multiply(a, b) {
     return a * b;
 }
 
 //Metodo que realiza la division
-function divide(a, b){
+function divide(a, b) {
     return a / b;
 }
 
+function result() {
+    if (op_screen.innerText !== "") {
+        number2 = parseFloat(screen.innerText);
+        //Seleccion de operacion
+        switch (op_screen.innerText) {
+            case "+":
+                screen.innerText = eleven_or_more(add(number, number2));
+                break;
+            case "-":
+                screen.innerText = eleven_or_more(subtract(number, number2));
+                break;
+            case "x":
+                screen.innerText = eleven_or_more(multiply(number, number2));
+                break;
+            case "÷":
+                screen.innerText = eleven_or_more(divide(number, number2));
+                break;
+            default:
+                screen.innerText = "Error! " + number + number2;
+        }
+        op_screen.innerText = "";
+        number = 0;
+        number2 = 0;
+    }
+}
+
 //Metodo que revisa si el numero a mostrar tiene mas de 11 digitos
-function eleven_or_more(element){
-    if(String(element).length > 10){
+function eleven_or_more(element) {
+    if (String(element).length > 10) {
         return parseFloat(element.toFixed(10));
     }
     return element;
