@@ -18,7 +18,8 @@ const div = document.querySelector("#ckeys li:nth-child(2) > button");
 const negative = document.querySelector("#ckeys li:nth-child(4) > button");
 
 //Definicion de variables de almacenamiento
-let number1 = 0;
+let number = 0;
+let operating = false;
 
 //Definicion de otras variables
 const screen = document.querySelector("#screen h1");
@@ -26,19 +27,20 @@ const op_screen = document.querySelector("#screen h4:nth-child(1)");
 const num_screen = document.querySelector("#screen > section h4:nth-child(2)");
 
 //Funcion que muestra el valor en pantalla
-function show_value(button){
-    if(screen.innerHTML.length < 11){
+function show_value(button) {
+    if (screen.innerHTML.length < 11) {
         //Comprobar si el valor del boton es un numero
-        if(!isNaN(parseInt(button.innerHTML))){
+        if (!isNaN(parseInt(button.innerHTML))) {
             console.log(parseInt(button.innerHTML));
             //Comprobar si el valor en pantalla solo contiene un cero (0)
-            if(screen.innerHTML === "0"){
+            if (screen.innerHTML === "0" || operating) {
                 screen.innerHTML = button.innerHTML;
+                operating = false;
             } else {
                 screen.innerHTML += button.innerHTML;
             }
-        //Comprobar si el valor en pantalla contiene o no el caracter decimal (.)
-        } else if(button.innerHTML == '.' && !screen.innerHTML.includes('.')){
+            //Comprobar si el valor en pantalla contiene o no el caracter decimal (.)
+        } else if (button.innerHTML == '.' && !screen.innerHTML.includes('.')) {
             console.log(button.innerHTML);
             screen.innerHTML += button.innerHTML;
         }
@@ -46,19 +48,61 @@ function show_value(button){
 }
 
 //Metodo para reiniciar la pantalla
-function delete_all(){
+function delete_all() {
     screen.innerText = "0";
+    op_screen = "";
+    operating = false;
+    number = 0;
 }
 
 //Metodo que realiza la operacion y muestra el resultado
-function operation(button){
-    number1 = parseFloat(screen.innerText);
-    console.log(number1);
-    op_screen.innerText = button.innerHTML;
-
+function operation(button) {
+    if (number === 0) {
+        number = parseFloat(screen.innerText);
+        console.log(number);
+        op_screen.innerText = button.innerHTML;
+    } else {
+        switch(op_screen.innerText){
+            case "+":
+                number = add(number, parseFloat(screen.innerText));
+                screen.innerText = number;
+                break;
+            case "-":
+                number = subtract(number, parseFloat(screen.innerText));
+                screen.innerText = number;
+                break;
+            case "x":
+                number = multiply(number, parseFloat(screen.innerText));
+                screen.innerText = number;
+                break;
+            case "÷":
+                number = divide(number, parseFloat(screen.innerText));
+                screen.innerText = number;
+                break;
+            default:
+                screen.innerText = "Syntax Error";
+        }
+    }
+    op_screen.innerText = button.innerText;
+    operating = true;
 }
 
 //Metodo que realiza la suma
-function sum(num1, num2){
-    return num1 + num2;
+function add(a, b) {
+    return a + b;
+}
+
+//Metodo que realiza la resta
+function subtract(a, b){
+    return a - b;
+}
+
+//Metodo que realiza la multiplicacion
+function multiply(a, b){
+    return a * b;
+}
+
+//Metodo que realiza la division
+function divide(a, b){
+    return a / b;
 }
