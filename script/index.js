@@ -50,7 +50,7 @@ function show_value(button) {
 //Metodo para reiniciar la pantalla
 function delete_all() {
     screen.innerText = "0";
-    op_screen = "";
+    op_screen.innerText = "";
     operating = false;
     number = 0;
 }
@@ -62,28 +62,31 @@ function operation(button) {
         console.log(number);
         op_screen.innerText = button.innerHTML;
     } else {
+        //Seleccion de metodo a utilizar
         switch(op_screen.innerText){
-            case "+":
+            case "+":   //suma
                 number = add(number, parseFloat(screen.innerText));
-                screen.innerText = number;
+                screen.innerText = eleven_or_more(number);
                 break;
-            case "-":
+            case "-":   //resta
                 number = subtract(number, parseFloat(screen.innerText));
-                screen.innerText = number;
+                screen.innerText = eleven_or_more(number);
                 break;
-            case "x":
+            case "x":   //multiplicacion
                 number = multiply(number, parseFloat(screen.innerText));
-                screen.innerText = number;
+                screen.innerText = eleven_or_more(number);
                 break;
-            case "÷":
+            case "÷":   //division
                 number = divide(number, parseFloat(screen.innerText));
-                screen.innerText = number;
+                screen.innerText = eleven_or_more(number);
                 break;
             default:
                 screen.innerText = "Syntax Error";
         }
     }
-    op_screen.innerText = button.innerText;
+    if(button.innerText !== "="){
+        op_screen.innerText = button.innerText;
+    }
     operating = true;
 }
 
@@ -105,4 +108,12 @@ function multiply(a, b){
 //Metodo que realiza la division
 function divide(a, b){
     return a / b;
+}
+
+//Metodo que revisa si el numero a mostrar tiene mas de 11 digitos
+function eleven_or_more(element){
+    if(String(element).length > 10){
+        return parseFloat(element.toFixed(10));
+    }
+    return element;
 }
