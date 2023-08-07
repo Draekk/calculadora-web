@@ -10,6 +10,13 @@ html {
     box-sizing: border-box;
 }
 
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 p {
     width: 100%;
     font-size: 0.7rem;
@@ -26,7 +33,6 @@ li {
 main {
     border:solid 0.01rem black;
     width: 30rem;
-    margin: 1rem auto;
     border-radius: 1rem;
     box-shadow: 3px 5px 10px 5px rgba(0,0,0,0.75),
     inset 3px 5px 10px -5px rgba(255, 255, 255, 0.445);
