@@ -86,6 +86,13 @@ function operation(button) {
     console.log({ number, number2, operating, screen, op_screen });
 }
 
+function plus_minus(){
+    if(screen.innerText !== "0"){
+        screen.innerText = fix_number_length(parseFloat(screen.innerText) * -1);
+        showed_result = true;
+    }
+}
+
 //Metodo que realiza la suma
 function add(a, b) {
     return a + b;
