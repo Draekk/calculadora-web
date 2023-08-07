@@ -107,7 +107,7 @@ function divide(a, b) {
 }
 
 function percent() {
-    if (op_screen.innerText !== "") {
+    if (op_screen.innerText !== "" && !showed_result) {
         number2 = number * fix_number_length(parseFloat(screen.innerText)) / 100;
         op_selection(number, number2);
         number = parseFloat(screen.innerText);
