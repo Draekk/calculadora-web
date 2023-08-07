@@ -93,6 +93,10 @@ function plus_minus(){
     }
 }
 
+function clean_screen(){
+    screen.innerText = "0";
+}
+
 //Metodo que realiza la suma
 function add(a, b) {
     return a + b;
