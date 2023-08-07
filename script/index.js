@@ -21,6 +21,7 @@ const negative = document.querySelector("#ckeys li:nth-child(4) > button");
 let number = 0;
 let number2 = 0;
 let operating = false;
+let showed_result = false;
 
 //Definicion de otras variables
 const screen = document.querySelector("#screen h1");
@@ -44,6 +45,7 @@ function show_value(button) {
         } else if (button.innerHTML == '.' && !screen.innerHTML.includes('.')) {
             screen.innerHTML += button.innerHTML;
         }
+        showed_result = false;
         console.log({ number, number2, operating, screen, op_screen });
     }
 }
@@ -60,10 +62,10 @@ function delete_all() {
 
 //Metodo que realiza la operacion y muestra el resultado
 function operation(button) {
-    if (number === 0) {
+    if (number === 0 || showed_result) {
         number = fix_number_length(parseFloat(screen.innerText));
         op_screen.innerText = button.innerHTML;
-    } else {
+    } else if (!showed_result) {
         if(number2 !== 0){
             number = fix_number_length(parseFloat(screen.innerText));
         } else {
@@ -75,22 +77,21 @@ function operation(button) {
                 screen.innerText = fix_number_length(add(number, number2));
                 break;
             case "-":   //resta
-                number = subtract(number, number2);
-                screen.innerText = fix_number_length(number);
+                screen.innerText = fix_number_length(subtract(number, number2));
                 break;
             case "x":   //multiplicacion
-                number = multiply(number, number2);
-                screen.innerText = fix_number_length(number);
+                screen.innerText = fix_number_length(multiply(number, number2));
                 break;
             case "÷":   //division
-                number = divide(number, number2);
-                screen.innerText = fix_number_length(number);
+                screen.innerText = fix_number_length(divide(number, number2));
                 break;
             default:
                 screen.innerText = "Syntax Error";
         }
         op_screen.innerText = button.innerText;
+        number = parseFloat(screen.innerText);
         number2 = 0;
+        showed_result = true;
     }
     operating = true;
     console.log({ number, number2, operating, screen, op_screen });
@@ -136,6 +137,7 @@ function result() {
             default:
                 screen.innerText = "Error! " + number + number2;
         }
+        showed_result = true;
         op_screen.innerText = "";
         number = 0;
         number2 = 0;
