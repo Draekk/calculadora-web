@@ -35,16 +35,19 @@ function show_value(button) {
         //Comprobar si el valor del boton es un numero
         if (!isNaN(parseInt(button.innerHTML))) {
             //Comprobar si el valor en pantalla solo contiene un cero (0)
-            if (screen.innerHTML === "0" || operating) {
+            if (screen.innerHTML === "0" || operating || showed_result) {
                 screen.innerHTML = button.innerHTML;
-                operating = false;
             } else {
                 screen.innerHTML += button.innerHTML;
             }
             //Comprobar si el valor en pantalla contiene o no el caracter decimal (.)
-        } else if (button.innerHTML == '.' && !screen.innerHTML.includes('.')) {
+        } else if (button.innerHTML == '.' && !screen.innerHTML.includes('.') || showed_result) {
+            if(showed_result){
+                screen.innerText = "0";
+            }
             screen.innerHTML += button.innerHTML;
         }
+        operating = false;
         showed_result = false;
         console.log({ number, number2, operating, screen, op_screen });
     }
@@ -55,6 +58,7 @@ function delete_all() {
     screen.innerText = "0";
     op_screen.innerText = "";
     operating = false;
+    showed_result = false;
     number = 0;
     number2 = 0;
     console.log({ number, number2, operating, screen, op_screen });
