@@ -22,18 +22,18 @@
             <h1>0</h1>
         </section>
         <ul id="ckeys" class="container">
-            <li><button onclick="percent()">%</button></li>
-            <li><button onclick="operation(this)">÷</button></li>
-            <li><button onclick="operation(this)">x</button></li>
-            <li><button onclick="plus_minus()">±</button></li>
+            <li><button class="op" onclick="percent()">%</button></li>
+            <li><button class="op" onclick="operation(this)">÷</button></li>
+            <li><button class="op" onclick="operation(this)">x</button></li>
+            <li><button class="op" onclick="plus_minus()">±</button></li>
             <li><button onclick="show_value(this)">7</button></li>
             <li><button onclick="show_value(this)">8</button></li>
             <li><button onclick="show_value(this)">9</button></li>
-            <li><button onclick="operation(this)">-</button></li>
+            <li><button class="op" onclick="operation(this)">-</button></li>
             <li><button onclick="show_value(this)">4</button></li>
             <li><button onclick="show_value(this)">5</button></li>
             <li><button onclick="show_value(this)">6</button></li>
-            <li><button onclick="operation(this)">+</button></li>
+            <li><button class="op" onclick="operation(this)">+</button></li>
             <li><button onclick="show_value(this)">1</button></li>
             <li><button onclick="show_value(this)">2</button></li>
             <li><button onclick="show_value(this)">3</button></li>
@@ -41,7 +41,7 @@
             <li><button onclick="delete_all()">AC</button></li>
             <li><button onclick="show_value(this)">0</button></li>
             <li><button onclick="show_value(this)">.</button></li>
-            <li><button onclick="result()">=</button></li>
+            <li><button class="op" onclick="result()">=</button></li>
         </ul>
     </main>
 </body>

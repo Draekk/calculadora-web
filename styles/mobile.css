@@ -105,7 +105,35 @@ h1, h3{
     height: 6.5rem;
     margin: 0.2rem;
     border-radius: 1rem;
-    font-size: 2.3rem;
+    font-size: 3.5rem;
     font-weight: bold;
     background-color: #a4b0b0;
+}
+
+#ckeys li:nth-child(2) > button {
+    font-size: 5rem;
+}
+
+#ckeys li:nth-child(16) > button, #ckeys li:nth-child(17) > button {
+    background-color: rgb(172, 0, 0);
+    color: white;
+}
+
+#ckeys li:nth-child(16) > button:active, #ckeys li:nth-child(17) > button:active {
+    box-shadow: 0 0 15px rgb(172, 0, 0);
+    background-color: rgba(255, 0, 0, 0.719);
+}
+
+#ckeys li > button:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+#ckeys li > button:active {
+    box-shadow: 0 0 15px rgba(3, 161, 0, 0.5);
+    background-color: rgba(98, 253, 96, 0.5);
+}
+
+#ckeys li > .op {
+    background-color: #242424;
+    color: white;
 }
