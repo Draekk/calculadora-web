@@ -66,28 +66,13 @@ function operation(button) {
         number = fix_number_length(parseFloat(screen.innerText));
         op_screen.innerText = button.innerHTML;
     } else if (!showed_result) {
-        if(number2 !== 0){
+        if (number2 !== 0) {
             number = fix_number_length(parseFloat(screen.innerText));
         } else {
             number2 = fix_number_length(parseFloat(screen.innerText));
         }
         //Seleccion de metodo a utilizar
-        switch (op_screen.innerText) {
-            case "+":   //suma
-                screen.innerText = fix_number_length(add(number, number2));
-                break;
-            case "-":   //resta
-                screen.innerText = fix_number_length(subtract(number, number2));
-                break;
-            case "x":   //multiplicacion
-                screen.innerText = fix_number_length(multiply(number, number2));
-                break;
-            case "÷":   //division
-                screen.innerText = fix_number_length(divide(number, number2));
-                break;
-            default:
-                screen.innerText = "Syntax Error";
-        }
+        op_selection(number, number2);
         op_screen.innerText = button.innerText;
         number = parseFloat(screen.innerText);
         number2 = 0;
@@ -117,32 +102,48 @@ function divide(a, b) {
     return a / b;
 }
 
+function percent() {
+    if (op_screen.innerText !== "") {
+        number2 = number * fix_number_length(parseFloat(screen.innerText)) / 100;
+        op_selection(number, number2);
+        number = parseFloat(screen.innerText);
+        number2 = 0;
+        showed_result = true;
+        operating = true;
+        console.log({ number, number2, operating, screen, op_screen });
+    }
+}
+
 function result() {
     if (op_screen.innerText !== "") {
         number2 = fix_number_length(parseFloat(screen.innerText));
         //Seleccion de operacion
-        switch (op_screen.innerText) {
-            case "+":
-                screen.innerText = fix_number_length(add(number, number2));
-                break;
-            case "-":
-                screen.innerText = fix_number_length(subtract(number, number2));
-                break;
-            case "x":
-                screen.innerText = fix_number_length(multiply(number, number2));
-                break;
-            case "÷":
-                screen.innerText = fix_number_length(divide(number, number2));
-                break;
-            default:
-                screen.innerText = "Error! " + number + number2;
-        }
+        op_selection(number, number2);
         showed_result = true;
         op_screen.innerText = "";
         number = 0;
         number2 = 0;
     }
     console.log({ number, number2, operating, screen, op_screen });
+}
+
+function op_selection(a, b) {
+    switch (op_screen.innerText) {
+        case "+": //suma
+            screen.innerText = fix_number_length(add(a, b));
+            break;
+        case "-": //resta
+            screen.innerText = fix_number_length(subtract(a, b));
+            break;
+        case "x": //multiplicacion
+            screen.innerText = fix_number_length(multiply(a, b));
+            break;
+        case "÷": //division
+            screen.innerText = fix_number_length(divide(a, b));
+            break;
+        default:
+            screen.innerText = "Syntax Error";
+    }
 }
 
 //Metodo que revisa la longitud del numero a mostrar en pantalla
