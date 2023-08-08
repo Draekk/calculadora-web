@@ -164,9 +164,30 @@ function op_selection(a, b) {
 }
 
 //Metodo que revisa la longitud del numero a mostrar en pantalla
-function fix_number_length(element, width = 3) {
+function fix_number_length2(element, width = 3) {
     if (String(element).length > width && String(element).includes('.')) {
         return element.toFixed(width);
     }
     return element;
+}
+
+function fix_number_length(element, width = 11){
+    //Longitud del numero a mostrar
+    let number_length = String(element).length;
+
+    //Comparar si la longitud del numero es mayor al espacio disponible
+    //y si el numero contiene decimales
+    if(number_length > width && String(element).includes('.')){
+        let number_parts = String(element).split('.');
+        let int_length = number_parts[0].length;
+
+        if(number_parts[0].length < width) {
+            width = width - int_length - 1;
+            return element.toFixed(width);
+        } else {
+            return "Out of range!";
+        }
+    } else {
+        return element;
+    }
 }
