@@ -88,6 +88,7 @@ h1, h3{
     background-color: var(--screen-color);
     flex-wrap: nowrap;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 #screen h1 {

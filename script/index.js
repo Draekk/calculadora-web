@@ -31,7 +31,7 @@ const num_screen = document.querySelector("#screen > section h4:nth-child(2)");
 
 //Funcion que muestra el valor en pantalla
 function show_value(button) {
-    if (screen.innerHTML.length < 11) {
+    if (screen.innerHTML.length < 10) {
         //Comprobar si el valor del boton es un numero
         if (!isNaN(parseInt(button.innerHTML))) {
             //Comprobar si el valor en pantalla solo contiene un cero (0)
@@ -50,6 +50,8 @@ function show_value(button) {
         operating = false;
         showed_result = false;
         console.log({ number, number2, operating, screen, op_screen });
+    } else if(operating){
+        screen.innerText = button.innerText;
     }
 }
 
@@ -162,9 +164,9 @@ function op_selection(a, b) {
 }
 
 //Metodo que revisa la longitud del numero a mostrar en pantalla
-function fix_number_length(element, width = 10) {
-    if (String(element).length > width) {
-        return parseFloat(element.toFixed(width));
+function fix_number_length(element, width = 3) {
+    if (String(element).length > width && String(element).includes('.')) {
+        return element.toFixed(width);
     }
     return element;
 }
