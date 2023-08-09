@@ -1,0 +1,83 @@
+:root {
+    --shadow-color: rgba(0,0,0,0.75);
+    --inset-shadow-color: rgba(255, 255, 255, 0.445);
+    --button-size: 9.75rem;
+    --primary-color: #343a40;
+    --screen-color: #27342e;
+    --number-button-color: #a4b0b0;
+    --delete-button-color: rgb(172, 0, 0);
+    --bright-d-button-color: rgba(255, 0, 0, 0.719);
+    --selecting-button-color: rgba(255, 255, 255, 0.5);
+    --active-back-button-color:rgba(98, 253, 96, 0.5);
+    --active-bright-button-color: rgba(3, 161, 0, 0.5);
+    --op-button-color: #242424;
+}
+
+p {
+    font-size: 1.05rem;
+    margin-right: 1.5rem;
+}
+
+main {
+    border: solid 0.015rem black;
+    width: 45rem;
+    border-radius: 1.5rem;
+    box-shadow: 0.45rem 0.75rem 1.5rem 0.75rem var(--shadow-color),
+    inset 0.45rem  0.75rem 1.5rem -0.75rem var(--inset-shadow-color);
+}
+
+main .container {
+    margin-top: 3rem;
+}
+
+.container {
+    border: solid 0.015rem black;
+    border-radius: 0.75rem;
+    margin: 0.75rem;
+}
+
+h1, h3 {
+    font-size: 3rem;
+}
+
+#screen h1 {
+    padding: 0 1.5rem 0 0;
+    font-size: 6rem;
+}
+
+#screen h4 {
+    font-size: 3rem;
+}
+
+#screen section h4:nth-child(2) {
+    font-size: 2.1rem;
+}
+
+#ckeys {
+    border: solid 0.015rem black;
+    margin: 0.75rem;
+}
+
+#ckeys button {
+    width: var(--button-size);
+    height: var(--button-size);
+    margin: 0.3rem;
+    border-radius: 1.5rem;
+    font-size: 5.25rem;
+}
+
+#ckeys li:nth-child(2) > button {
+    font-size: 7.5rem;
+}
+
+#ckeys li:nth-child(16) > button:active, #ckeys li:nth-child(17) > button:active {
+    box-shadow: 0 0 2.25rem var(--delete-button-color);
+}
+
+#ckeys li > button:hover {
+    box-shadow: 0 0 2.25rem var(--selecting-button-color);
+}
+
+#ckeys li > button:active {
+    box-shadow: 0 0 2.25rem var(--active-bright-button-color);
+}

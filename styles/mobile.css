@@ -1,10 +1,26 @@
+:root {
+    --back-color: #f8f7ff;
+    --normal-shadow: 0.3rem 0.5rem 1rem 0.5rem rgba(0,0,0,0.75);
+    --inset-shadow: inset 0.3rem 0.5rem 1rem -0.5rem rgba(255, 255, 255, 0.445);
+    --primary-color: #343a40;
+    --screen-color: #27342e;
+    --number-button-color: #a4b0b0;
+    --delete-button-color: rgb(172, 0, 0);
+    --bright-d-button-color: rgba(255, 0, 0, 0.719);
+    --selecting-button-color: rgba(255, 255, 255, 0.5);
+    --active-back-button-color:rgba(98, 253, 96, 0.5);
+    --active-bright-button-color: rgba(3, 161, 0, 0.5);
+    --op-button-color: #242424;
+    --button-size: 6.5rem;
+}
+
 html {
     font-size: 62.5%;
     font-family: sans-serif;
 }
 
 * {
-    background-color: #f8f7ff;
+    background-color: var(--back-color);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -34,9 +50,9 @@ main {
     border:solid 0.01rem black;
     width: 30rem;
     border-radius: 1rem;
-    box-shadow: 3px 5px 10px 5px rgba(0,0,0,0.75),
-    inset 3px 5px 10px -5px rgba(255, 255, 255, 0.445);
-    background-color: #343a40;
+    box-shadow: var(--normal-shadow),
+    var(--inset-shadow);
+    background-color: var(--primary-color);
 }
 
 main .container:first-child {
@@ -69,9 +85,10 @@ h1, h3{
 
 #screen {
     height: 10%;
-    background-color: #27342e;
+    background-color: var(--screen-color);
     flex-wrap: nowrap;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 #screen h1 {
@@ -107,13 +124,13 @@ h1, h3{
 }
 
 #ckeys button {
-    width: 6.5rem;
-    height: 6.5rem;
+    width: var(--button-size);
+    height: var(--button-size);
     margin: 0.2rem;
     border-radius: 1rem;
     font-size: 3.5rem;
     font-weight: bold;
-    background-color: #a4b0b0;
+    background-color: var(--number-button-color);
 }
 
 #ckeys li:nth-child(2) > button {
@@ -121,25 +138,25 @@ h1, h3{
 }
 
 #ckeys li:nth-child(16) > button, #ckeys li:nth-child(17) > button {
-    background-color: rgb(172, 0, 0);
+    background-color: var(--delete-button-color);
     color: white;
 }
 
 #ckeys li:nth-child(16) > button:active, #ckeys li:nth-child(17) > button:active {
-    box-shadow: 0 0 15px rgb(172, 0, 0);
-    background-color: rgba(255, 0, 0, 0.719);
+    box-shadow: 0 0 1.5rem var(--delete-button-color);
+    background-color: var(--bright-d-button-color);
 }
 
 #ckeys li > button:hover {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 1.5rem var(--selecting-button-color);
 }
 
 #ckeys li > button:active {
-    box-shadow: 0 0 15px rgba(3, 161, 0, 0.5);
-    background-color: rgba(98, 253, 96, 0.5);
+    box-shadow: 0 0 1.5rem var(--active-bright-button-color);
+    background-color: var(--active-back-button-color);
 }
 
 #ckeys li > .op {
-    background-color: #242424;
+    background-color: var(--op-button-color);
     color: white;
 }

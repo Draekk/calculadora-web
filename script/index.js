@@ -31,7 +31,7 @@ const num_screen = document.querySelector("#screen > section h4:nth-child(2)");
 
 //Funcion que muestra el valor en pantalla
 function show_value(button) {
-    if (screen.innerHTML.length < 11) {
+    if (screen.innerHTML.length < 10) {
         //Comprobar si el valor del boton es un numero
         if (!isNaN(parseInt(button.innerHTML))) {
             //Comprobar si el valor en pantalla solo contiene un cero (0)
@@ -50,6 +50,8 @@ function show_value(button) {
         operating = false;
         showed_result = false;
         console.log({ number, number2, operating, screen, op_screen });
+    } else if(operating){
+        screen.innerText = button.innerText;
     }
 }
 
@@ -162,9 +164,26 @@ function op_selection(a, b) {
 }
 
 //Metodo que revisa la longitud del numero a mostrar en pantalla
-function fix_number_length(element, width = 10) {
-    if (String(element).length > width) {
-        return parseFloat(element.toFixed(width));
+function fix_number_length(element, width = 11){
+    //Longitud del numero a mostrar
+    let number_length = String(element).length;
+
+    //Comparar si la longitud del numero es mayor al espacio disponible
+    //y si el numero contiene decimales
+    if(number_length > width && String(element).includes('.')){
+        let number_parts = String(element).split('.');
+        let int_length = number_parts[0].length;
+
+        //Si la longitud del numero entero es menor al espacio disponible
+        if(int_length < width) {
+            //restar al espacio disponible la longitud del entero
+            //-1 que es el espacio que ocupa el punto decimal(.)
+            width = width - int_length - 1;
+            return element.toFixed(width);
+        } else {
+            return "Out of range!";
+        }
+    } else {
+        return element;
     }
-    return element;
 }
