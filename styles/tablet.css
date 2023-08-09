@@ -1,7 +1,7 @@
 :root {
     --shadow-color: rgba(0,0,0,0.75);
     --inset-shadow-color: rgba(255, 255, 255, 0.445);
-    --button-size: 9.75rem;
+    --button-size: 7.8rem;
     --primary-color: #343a40;
     --screen-color: #27342e;
     --number-button-color: #a4b0b0;
@@ -14,60 +14,60 @@
 }
 
 p {
-    font-size: 1.05rem;
-    margin-right: 1.5rem;
+    font-size: 0.84rem;
+    margin-right: 1.2rem;
 }
 
 main {
-    border: solid 0.015rem black;
-    width: 45rem;
-    border-radius: 1.5rem;
-    box-shadow: 0.45rem 0.75rem 1.5rem 0.75rem var(--shadow-color),
-    inset 0.45rem  0.75rem 1.5rem -0.75rem var(--inset-shadow-color);
+    border: solid 0.012rem black;
+    width: 36rem;
+    border-radius: 1.2rem;
+    box-shadow: 0.36rem 0.6rem 1.2rem 0.6rem var(--shadow-color),
+    inset 0.36rem  0.6rem 1.2rem -0.6rem var(--inset-shadow-color);
 }
 
 main .container {
-    margin-top: 3rem;
+    margin-top: 2.4rem;
 }
 
 .container {
-    border: solid 0.015rem black;
-    border-radius: 0.75rem;
-    margin: 0.75rem;
+    border: solid 0.012rem black;
+    border-radius: 0.6rem;
+    margin: 0.6rem;
 }
 
 h1, h3 {
-    font-size: 3rem;
+    font-size: 2.4rem;
 }
 
 #screen h1 {
-    padding: 0 1.5rem 0 0;
-    font-size: 6rem;
+    padding: 0 1.2rem 0 0;
+    font-size: 4.8rem;
 }
 
 #screen h4 {
-    font-size: 3rem;
+    font-size: 2.4rem;
 }
 
 #screen section h4:nth-child(2) {
-    font-size: 2.1rem;
+    font-size: 1.68rem;
 }
 
 #ckeys {
-    border: solid 0.015rem black;
-    margin: 0.75rem;
+    border: solid 0.012rem black;
+    margin: 0.6rem;
 }
 
 #ckeys button {
     width: var(--button-size);
     height: var(--button-size);
-    margin: 0.3rem;
-    border-radius: 1.5rem;
-    font-size: 5.25rem;
+    margin: 0.24rem;
+    border-radius: 1.2rem;
+    font-size: 4.2rem;
 }
 
 #ckeys li:nth-child(2) > button {
-    font-size: 7.5rem;
+    font-size: 6rem;
 }
 
 #ckeys li:nth-child(16) > button:active, #ckeys li:nth-child(17) > button:active {
@@ -75,9 +75,9 @@ h1, h3 {
 }
 
 #ckeys li > button:hover {
-    box-shadow: 0 0 2.25rem var(--selecting-button-color);
+    box-shadow: 0 0 1.8rem var(--selecting-button-color);
 }
 
 #ckeys li > button:active {
-    box-shadow: 0 0 2.25rem var(--active-bright-button-color);
+    box-shadow: 0 0 1.8rem var(--active-bright-button-color);
 }
