@@ -164,13 +164,6 @@ function op_selection(a, b) {
 }
 
 //Metodo que revisa la longitud del numero a mostrar en pantalla
-function fix_number_length2(element, width = 3) {
-    if (String(element).length > width && String(element).includes('.')) {
-        return element.toFixed(width);
-    }
-    return element;
-}
-
 function fix_number_length(element, width = 11){
     //Longitud del numero a mostrar
     let number_length = String(element).length;
@@ -181,7 +174,10 @@ function fix_number_length(element, width = 11){
         let number_parts = String(element).split('.');
         let int_length = number_parts[0].length;
 
-        if(number_parts[0].length < width) {
+        //Si la longitud del numero entero es menor al espacio disponible
+        if(int_length < width) {
+            //restar al espacio disponible la longitud del entero
+            //-1 que es el espacio que ocupa el punto decimal(.)
             width = width - int_length - 1;
             return element.toFixed(width);
         } else {
